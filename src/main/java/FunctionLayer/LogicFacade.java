@@ -1,6 +1,7 @@
 package FunctionLayer;
 
 import DBAccess.UserMapper;
+import PresentationLayer.Configuration;
 
 /**
  * The purpose of LogicFacade is to...
@@ -16,6 +17,10 @@ public class LogicFacade {
         User user = new User(email, password, "customer");
         UserMapper.createUser( user );
         return user;
+    }
+
+    public static Configuration getConfiguration(String length, String width, String height, boolean door, boolean window) {
+        return new Configuration(4, 0, 4, door, window);
     }
 
 }
