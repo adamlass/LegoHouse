@@ -33,8 +33,8 @@
                 <h1>All Orders</h1>
                 <% } %>
             </div>
-                <% if(role.equals("employee")){%>
-                <%@include file="EmployeeWarning.jsp" %>
+            <% if (role.equals("employee")) {%>
+            <%@include file="EmployeeWarning.jsp" %>
             <%}%>
             <div>
                 <form action="FrontController" method="post">
@@ -102,27 +102,33 @@
                 </div>
                 <div class="col-lg-6">
                     <% if (conf != null) {%>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>Contents of Order</h3>
+                        </div>
+                        <div>
 
-                    <h2>Contents of Order</h2>
-
-                    <table class="table table-bordered">
-                        <tr>
-                            <th></th>
-                            <th>4x2 blocks</th>
-                            <th>2x2 blocks</th>
-                            <th>1x2 blocks</th>
-                            <th>Door</th>
-                            <th>Window</th>
-                        </tr>
-                        <tr>
-                            <td>Amount:</td>
-                            <td><%= conf.getFourTwo()%></td>
-                            <td><%= conf.getTwoTwo()%></td>
-                            <td><%= conf.getOneTwo()%></td>
-                            <td><%= conf.isDoor()%></td>
-                            <td><%= "" + conf.isWindow()%></td>
-                        </tr>
-                    </table>
+                        <table class="table table">
+                            <tr>
+                                <th></th>
+                                <th>4x2 blocks</th>
+                                <th>2x2 blocks</th>
+                                <th>1x2 blocks</th>
+                                <th>Door</th>
+                                <th>Window</th>
+                            </tr>
+                            <tr>
+                                <td>Amount:</td>
+                                <td><%= conf.getFourTwo()%></td>
+                                <td><%= conf.getTwoTwo()%></td>
+                                <td><%= conf.getOneTwo()%></td>
+                                <td><%= conf.isDoor()%></td>
+                                <td><%= "" + conf.isWindow()%></td>
+                            </tr>
+                        </table>
+                        </div>
+                            
+                    </div>
 
 
 

@@ -26,11 +26,11 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="panel panel-default">
-                        <div class="panel-body">
+                        <div class="panel-heading">
+
                             <h2>Design your LegoHouse</h2>
-                            <a>Made possible by a recursive Lego Builder AI!</a>
-                            <br>
-                            <br>
+                        </div>
+                        <div class="panel-body">
 
                             <form name="configure" action="FrontController" method="POST" >
 
@@ -65,46 +65,51 @@
                                         <input type="checkbox" name="window" value="true"> Window
                                     </label>
                                 </label>
-
-                                <br>
-
-                                
+                                <br><br>
+                                <input type="submit" class="btn btn-primary" value="Calculate">
                             </form>
                         </div>
                         <div class="panel-footer">
-                                    <input type="submit" class="btn btn-primary" value="Calculate">
-                                </div>
+                            <a>Made possible by a recursive Lego Builder AI! </a>
+                        </div>
+
+
                     </div>
                 </div>
 
-                <br>
                 <div class="col-lg-6">
                     <% if (conf != null) {%>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>Calculated Items</h3>
+                        </div>
+                        <div class="panel-body">
 
-                    <table class="table table-bordered">
-                        <tr>
-                            <th></th>
-                            <th>4x2 blocks</th>
-                            <th>2x2 blocks</th>
-                            <th>1x2 blocks</th>
-                            <th>Door</th>
-                            <th>Window</th>
-                        </tr>
-                        <tr>
-                            <td>Amount:</td>
-                            <td><%= conf.getFourTwo()%></td>
-                            <td><%= conf.getTwoTwo()%></td>
-                            <td><%= conf.getOneTwo()%></td>
-                            <td><%= conf.isDoor()%></td>
-                            <td><%= "" + conf.isWindow()%></td>
-                        </tr>
-                    </table>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th></th>
+                                    <th>4x2 blocks</th>
+                                    <th>2x2 blocks</th>
+                                    <th>1x2 blocks</th>
+                                    <th>Door</th>
+                                    <th>Window</th>
+                                </tr>
+                                <tr>
+                                    <td>Amount:</td>
+                                    <td><%= conf.getFourTwo()%></td>
+                                    <td><%= conf.getTwoTwo()%></td>
+                                    <td><%= conf.getOneTwo()%></td>
+                                    <td><%= conf.isDoor()%></td>
+                                    <td><%= "" + conf.isWindow()%></td>
+                                </tr>
+                            </table>
 
-                    <form name="placeorder" action="FrontController" method="POST">
-                        <input type="hidden" name="command" value="placeorder">
-                        <input type="submit" class="btn btn-success" value="Place Order">
-                    </form>
-
+                            <form name="placeorder" action="FrontController" method="POST">
+                                <input type="hidden" name="command" value="placeorder">
+                                <input type="submit" class="btn btn-success" value="Place Order">
+                            </form>
+                        </div>
+                    </div>
 
                     <% } else if (session.getAttribute("orderok") != null) { %>
                     <div class="alert alert-success">
@@ -115,17 +120,10 @@
                         <%@include file="seeorders.jsp" %>
                     </div>
 
-
-
-
-
-
-
                     <% }%>
 
                 </div>
             </div>
-            <br>
             <br>
             <div>
                 <%@include file="seeorders.jsp" %>
