@@ -6,20 +6,23 @@
 package DBAccess;
 
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.Order;
 import FunctionLayer.User;
 import PresentationLayer.Configuration;
 import PresentationLayer.Specification;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author adamlass
  */
 public class OrderMapper {
-    
-    public static void placeOrder(Specification spec, int ownerId) throws LoginSampleException{
+
+    public static void placeOrder(Specification spec, int ownerId) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO Orders(owner,length,width,height,door,window) "
@@ -32,18 +35,55 @@ public class OrderMapper {
             pre.setBoolean(5, spec.isDoor());
             pre.setBoolean(6, spec.isWindow());
             pre.executeUpdate();
-            
+
         } catch (Exception e) {
             throw new LoginSampleException("Ordering Failed!");
         }
-        
+
     }
-    
-    
-    
+
+    public static List<Order> orders(User owner) throws LoginSampleException {
+        List<Order> res = new ArrayList<>();
+        try {
+            Connection con = Connector.connection();
+            StringBuilder SQL = new StringBuilder("SELECT * FROM Orders");
+
+            if (owner != null) {
+                SQL.append(" WHERE owner = ?");
+            }
+
+            PreparedStatement pre = con.prepareStatement(SQL.toString());
+
+            if (owner != null) {
+                pre.setInt(1, owner.getId());
+            }
+
+            ResultSet rs;
+            rs = pre.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int length = rs.getInt("length");
+                int width = rs.getInt("width");
+                int height = rs.getInt("height");
+                boolean door = rs.getBoolean("door");
+                boolean window = rs.getBoolean("window");
+                boolean sent = rs.getBoolean("sent");
+
+                int dbowner = rs.getInt("owner");
+                User orderOwner = UserMapper.find(dbowner);
+                
+                res.add(new Order(id, length, width, height, orderOwner, window, 
+                        door, sent));
+            }
+
+        } catch (Exception e) {
+            throw new LoginSampleException("Failed looking at orders!");
+        }
+        return res;
+    }
+
 }
-
-
 
 //try {
 //            Connection con = Connector.connection();

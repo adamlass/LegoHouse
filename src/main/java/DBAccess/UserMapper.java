@@ -57,5 +57,33 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
+    
+    public static User find(int id) throws LoginSampleException{
+        User res = null;
+        try{
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM Users where id = ?";
+            PreparedStatement pre = con.prepareStatement(SQL);
+            pre.setInt(1, id);
+            
+            ResultSet rs = pre.executeQuery();
+            
+            if(rs.next()){
+                int dbid = rs.getInt("id");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                String role = rs.getString("role");
+                
+                res = new User(email, password, role);
+                res.setId(dbid);
+            } else {
+                throw new Exception("User not found!");
+            }
+            
+        } catch (Exception ex){
+            throw new LoginSampleException(ex.getMessage());
+        } 
+       return res;
+    }
 
 }

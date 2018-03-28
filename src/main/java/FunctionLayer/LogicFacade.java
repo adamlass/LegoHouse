@@ -6,6 +6,7 @@ import FunctionLayer.Calculator.LegoHouseCalculator;
 import FunctionLayer.Calculator.Position;
 import PresentationLayer.Configuration;
 import PresentationLayer.Specification;
+import java.util.List;
 
 /**
  * The purpose of LogicFacade is to...
@@ -42,6 +43,14 @@ public class LogicFacade {
 
     public static void placeOrder(Specification spec, User owner) throws LoginSampleException {
         OrderMapper.placeOrder(spec, owner.getId());
+    }
+
+    public static List<Order> getOrders() throws LoginSampleException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static List<Order> getOrders(User owner) throws LoginSampleException {
+        return OrderMapper.orders(owner);
     }
 
 }

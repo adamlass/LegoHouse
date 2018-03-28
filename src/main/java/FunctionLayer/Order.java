@@ -14,7 +14,8 @@ public class Order {
     private User owner;
     private boolean window, door, sent;
 
-    public Order(int length, int width, int height, User owner, boolean window, boolean door, boolean sent) {
+    public Order(int id, int length, int width, int height, User owner, boolean window, boolean door, boolean sent) {
+        this.id = id;
         this.length = length;
         this.width = width;
         this.height = height;
