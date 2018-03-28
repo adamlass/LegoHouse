@@ -46,7 +46,7 @@ public class LogicFacade {
     }
 
     public static List<Order> getOrders() throws LoginSampleException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return OrderMapper.orders(null);
     }
 
     public static List<Order> getOrders(User owner) throws LoginSampleException {

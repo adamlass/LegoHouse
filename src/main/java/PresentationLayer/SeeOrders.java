@@ -16,20 +16,21 @@ import javax.servlet.http.HttpSession;
  *
  * @author adamlass
  */
-public class SeeOrders extends Command{
+public class SeeOrders extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
         String role = user.getRole();
-        
-        if(role.equals("customer")){
+        session.setAttribute("configurationview", null);
+
+        if (role.equals("customer")) {
             session.setAttribute("orders", LogicFacade.getOrders(user));
-        } else if(role.equals("employee")){
+        } else if (role.equals("employee")) {
             session.setAttribute("orders", LogicFacade.getOrders());
         }
         return "orders";
     }
-    
+
 }

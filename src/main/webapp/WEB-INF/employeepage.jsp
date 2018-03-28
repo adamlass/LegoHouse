@@ -12,8 +12,13 @@
         <title>Employee home page</title>
     </head>
     <body>
-        
         <h1>Hello <%=request.getParameter( "email")%> </h1>
         You are now logged in as a EMPLOYEE of our wonderful site.
+        <div>
+            <form name="SeeOrders" action="FrontController" method="post">
+                <input type="hidden" name="command" value="SeeOrders">
+                <input type="submit" name="orders" value="See All Orders">
+            </form>
+        </div>
     </body>
 </html>

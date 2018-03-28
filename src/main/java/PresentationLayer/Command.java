@@ -16,6 +16,7 @@ abstract class Command {
         commands.put( "configure", new Configure());
         commands.put( "placeorder", new PlaceOrder());
         commands.put( "SeeOrders", new SeeOrders());
+        commands.put( "vieworder", new ViewOrder());
     }
 
     static Command from( HttpServletRequest request ) {
