@@ -33,6 +33,9 @@
                 <h1>All Orders</h1>
                 <% } %>
             </div>
+                <% if(role.equals("employee")){%>
+                <%@include file="EmployeeWarning.jsp" %>
+            <%}%>
             <div>
                 <form action="FrontController" method="post">
                     <input type="hidden" name="command" value="back">
