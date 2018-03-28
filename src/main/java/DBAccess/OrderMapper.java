@@ -83,6 +83,19 @@ public class OrderMapper {
         return res;
     }
 
+    public static void mark(int order) throws LoginSampleException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "UPDATE Orders SET sent=1 WHERE id=?";
+            PreparedStatement pre = con.prepareStatement(SQL);
+            pre.setInt(1, order);
+            pre.execute();
+            
+        } catch (Exception e) {
+            throw new LoginSampleException("Sending Order Failed!");
+        }
+    }
+
 }
 
 //try {

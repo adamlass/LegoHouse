@@ -81,18 +81,19 @@
             </form>
 
 
-                    <% } else if (session.getAttribute("orderok") != null) { %>
+            <% } else if (session.getAttribute("orderok") != null) { %>
             <h2>Order Was Successfully Submitted!</h2>
             <a>To view your order go to Orders</a>
 
             <% }%>
         </div>
-        
+
         <div>
             <form name="SeeOrders" action="FrontController" method="post">
                 <input type="hidden" name="command" value="SeeOrders">
                 <input type="submit" name="orders" value="Orders">
             </form>
+            <%@include file="logout.jsp" %>
         </div>
     </body>
 

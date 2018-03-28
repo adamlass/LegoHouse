@@ -62,6 +62,7 @@
                         <% if (!order.isSent()) {%>
                         <form name="SendOrder" action="FrontController" method="POST">
                             <input type="hidden" name="command" value="SendOrder">
+                            <input type="hidden" name="markid" value="<%= order.getId() %>">
                             <input type="submit" value="Mark as sent">
                         </form>
                         <%}%>
