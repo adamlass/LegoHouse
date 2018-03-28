@@ -25,49 +25,56 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <h2>Design your LegoHouse</h2>
-                    <a>Made possible by a recursive Lego Builder AI!</a>
-                    <br>
-                    <br>
-
-                    <form name="configure" action="FrontController" method="POST" >
-
-
-                        <input type="hidden" name="command" value="configure">
-
-                        <label>
-                            Length<br>
-                            <input type="number" class="form-control" name="length" placeholder="min. 8">
-                        </label>
-                        <br>
-
-                        <label>
-                            Width
-                            <input type="number" class="form-control" name="width" placeholder="min. 6">
-                        </label>
-                        <br>
-
-                        <label>
-                            Height
-                            <input type="number" class="form-control" name="height" placeholder="min. 6">
-                        </label>
-                        <br>
-
-                        <label>
-                            Door & Window
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h2>Design your LegoHouse</h2>
+                            <a>Made possible by a recursive Lego Builder AI!</a>
                             <br>
-                            <label class="form-control">
-                                <input type="checkbox" name="door" value="true"> Door
-                            </label>
-                            <label class="form-control">
-                                <input type="checkbox" name="window" value="true"> Window
-                            </label>
-                        </label>
+                            <br>
 
-                        <br>
+                            <form name="configure" action="FrontController" method="POST" >
 
-                        <input type="submit" class="btn btn-primary" value="Calculate">
-                    </form>
+
+                                <input type="hidden" name="command" value="configure">
+
+                                <label>
+                                    Length<br>
+                                    <input type="number" class="form-control" name="length" placeholder="min. 8">
+                                </label>
+                                <br>
+
+                                <label>
+                                    Width
+                                    <input type="number" class="form-control" name="width" placeholder="min. 6">
+                                </label>
+                                <br>
+
+                                <label>
+                                    Height
+                                    <input type="number" class="form-control" name="height" placeholder="min. 6">
+                                </label>
+                                <br>
+
+                                <label>
+                                    Door & Window
+                                    <br>
+                                    <label class="form-control">
+                                        <input type="checkbox" name="door" value="true"> Door
+                                    </label>
+                                    <label class="form-control">
+                                        <input type="checkbox" name="window" value="true"> Window
+                                    </label>
+                                </label>
+
+                                <br>
+
+                                
+                            </form>
+                        </div>
+                        <div class="panel-footer">
+                                    <input type="submit" class="btn btn-primary" value="Calculate">
+                                </div>
+                    </div>
                 </div>
 
                 <br>
@@ -107,12 +114,12 @@
                         <br><br>
                         <%@include file="seeorders.jsp" %>
                     </div>
-                   
-                    
-                    
 
 
-                    
+
+
+
+
 
                     <% }%>
 
