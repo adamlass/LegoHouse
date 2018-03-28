@@ -10,18 +10,18 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Employee home page</title>
-        <% 
+        <%
             String mark = (String) session.getAttribute("mark");
             session.setAttribute("mark", null);
         %>
     </head>
     <body>
         <h1>Hello <%=request.getParameter("email")%> </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
+        Logged in as Employee! You can't make orders, but only see and send them.
         <div>
-            <% if(mark != null){%>
+            <% if (mark != null) {%>
             <h2>Order was sent!</h2>
-            <% } %>
+            <% }%>
             <form name="SeeOrders" action="FrontController" method="post">
                 <input type="hidden" name="command" value="SeeOrders">
                 <input type="submit" name="orders" value="See All Orders">
