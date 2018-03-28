@@ -7,6 +7,7 @@ package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
+import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author adamlass
  */
-public class Configure extends Command{
+public class PlaceOrder extends Command{
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
@@ -32,10 +33,10 @@ public class Configure extends Command{
             window = true;
         }
         
+        User owner = (User) request.getSession().getAttribute("user");
         
-        Configuration conf = LogicFacade.getConfiguration(length,width,height,door,window);
-        request.getSession().setAttribute("configuration", conf);
-        return "customerpage";
+        LogicFacade.placeOrder(length, width, height, door, window, owner);
+        return "cutomerpage";
     }
     
 }

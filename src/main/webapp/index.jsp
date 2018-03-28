@@ -10,10 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Adams LegoHouse</title>
+
     </head>
     <body>
         <h1>Adams LegoHouse</h1>
-        
+        <img src="Pictures/LegoHouse2.png" width="20%" alt="LegoHouse" />
         <table>
             <tr><td>Login</td>
                 <td>
@@ -46,11 +47,11 @@
                 </td>
             </tr>
         </table>
-        <% String error = (String) request.getAttribute( "error");
-           if ( error != null) { %>
-           <H2>Error!!</h2>
-           <p><%= error %>
-        <% }
-        %>
+        <% String error = (String) request.getAttribute("error");
+            if (error != null) {%>
+        <H2>Error!!</h2>
+        <p><%= error%>
+            <% }
+            %>
     </body>
 </html>

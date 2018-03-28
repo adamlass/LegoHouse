@@ -5,6 +5,7 @@
  */
 package FunctionLayer.Calculator;
 
+import PresentationLayer.Configuration;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -26,6 +27,8 @@ public class LegoHouseCalculator {
             System.out.println(bl.length());
 
         }
+        
+        System.out.println(sand.configuration());
     }
 
     //******************************************************************
@@ -436,6 +439,30 @@ public class LegoHouseCalculator {
             block.setId(blockId++);
         }
         this.blocks.addAll(blocks);
+    }
+
+    public Configuration configuration() {
+        int fourTwo = 0;
+        int twoTwo = 0;
+        int oneTwo = 0;
+        
+        for(Block block : blocks){
+            if(!block.isReserved()){
+                switch(block.length()){
+                    case 4:
+                        fourTwo++;
+                        break;
+                    case 2:
+                        twoTwo++;
+                        break;
+                    case 1:
+                        oneTwo++;
+                        break;
+                }
+            }
+        }
+        
+        return new Configuration(fourTwo, twoTwo, oneTwo, door, window); 
     }
 
 }

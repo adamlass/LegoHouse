@@ -40,6 +40,11 @@ public class Configuration {
     public boolean isWindow() {
         return window;
     }
+
+    @Override
+    public String toString() {
+        return "Configuration{" + "fourTwo=" + fourTwo + ", twoTwo=" + twoTwo + ", oneTwo=" + oneTwo + ", door=" + door + ", window=" + window + '}';
+    }
     
     
     

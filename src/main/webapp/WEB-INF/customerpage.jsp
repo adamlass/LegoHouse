@@ -24,16 +24,20 @@
         </div>
         <div>
             <h1>Design your LegoHouse</h1>
+            <a>Made possible by a recursive Lego Builder AI!</a>
+            <br>
+            <br>
+            
             <form name="configure" action="FrontController" method="POST">
                 <input type="hidden" name="command" value="configure">
                 Length:<br>
-                <input type="number" name="length" value="4">
+                <input type="number" name="length" value="8">
                 <br>
                 Width:<br>
-                <input type="number" name="width" value="4">
+                <input type="number" name="width" value="6">
                 <br>
                 Height:<br>
-                <input type="number" name="height" value="1">
+                <input type="number" name="height" value="6">
                 <br>
 
                 Include:
