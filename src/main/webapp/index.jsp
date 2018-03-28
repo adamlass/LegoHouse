@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Adams LegoHouse</title>
-
+        <%@include file="bootstrap.jsp" %>
     </head>
     <body>
         <h1>Adams LegoHouse</h1>

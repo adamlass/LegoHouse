@@ -19,6 +19,7 @@ abstract class Command {
         commands.put( "vieworder", new ViewOrder());
         commands.put( "SendOrder", new SendOrder());
         commands.put( "LogOut", new LogOut());
+        commands.put( "back", new Back());
     }
 
     static Command from( HttpServletRequest request ) {

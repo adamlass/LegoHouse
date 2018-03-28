@@ -4,19 +4,22 @@
     Author     : kasper
 --%>
 
+<%@page import="FunctionLayer.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Employee home page</title>
+        <%@include file="bootstrap.jsp" %>
         <%
+            User user = (User) session.getAttribute("user");
             String mark = (String) session.getAttribute("mark");
             session.setAttribute("mark", null);
         %>
     </head>
     <body>
-        <h1>Hello <%=request.getParameter("email")%> </h1>
+        <h1>Hello <%= user.getEmail() %> </h1>
         Logged in as Employee! You can't make orders, but only see and send them.
         <div>
             <% if (mark != null) {%>
