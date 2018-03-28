@@ -39,7 +39,7 @@
 
                                 <input type="password" class="form-control" name="password" placeholder="1234">
                                 <br>
-                                <input type="submit" class="btn btn-primary" value="Submit">
+                                <input type="submit" class="btn btn-primary" value="Login">
                             </form>
                             <br><br>
                         </div>
@@ -65,7 +65,7 @@
                                 
                                 <input type="password" class="form-control" name="password2" placeholder="********">
                                 <br>
-                                <input type="submit" class="btn btn-primary" value="Submit">
+                                <input type="submit" class="btn btn-primary" value="Create User">
                             </form>
                         </div>
                     </div>
