@@ -10,6 +10,7 @@ import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -19,24 +20,18 @@ public class PlaceOrder extends Command{
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        int length = Integer.parseInt(request.getParameter("length"));
-        int width = Integer.parseInt(request.getParameter("width"));
-        int height = Integer.parseInt(request.getParameter("height"));
-        boolean door = false;
-        boolean window = false;
-        
-        if(request.getParameter("door") != null){
-            door = true;
-        } 
-        
-        if(request.getParameter("window") != null){
-            window = true;
-        }
+        HttpSession session = request.getSession();
+        Specification spec = (Specification) session
+                .getAttribute("specification");
         
         User owner = (User) request.getSession().getAttribute("user");
+        LogicFacade.placeOrder(spec, owner);
+        session.setAttribute("specification", null);
+        session.setAttribute("configuration", null);
+        session.setAttribute("orderok", "notnull"); //the only way that worked...
         
-        LogicFacade.placeOrder(length, width, height, door, window, owner);
-        return "cutomerpage";
+        
+        return "customerpage";
     }
     
 }

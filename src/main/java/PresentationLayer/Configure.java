@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author adamlass
  */
-public class Configure extends Command{
+public class Configure extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
@@ -23,19 +23,21 @@ public class Configure extends Command{
         int height = Integer.parseInt(request.getParameter("height"));
         boolean door = false;
         boolean window = false;
-        
-        if(request.getParameter("door") != null){
+
+        if (request.getParameter("door") != null) {
             door = true;
-        } 
-        
-        if(request.getParameter("window") != null){
+        }
+
+        if (request.getParameter("window") != null) {
             window = true;
         }
-        
-        
-        Configuration conf = LogicFacade.getConfiguration(length,width,height,door,window);
+
+        Specification spec = new Specification(length, width, height, door, window);
+        Configuration conf = LogicFacade.getConfiguration(spec);
+
         request.getSession().setAttribute("configuration", conf);
+        request.getSession().setAttribute("specification", spec);
         return "customerpage";
     }
-    
+
 }

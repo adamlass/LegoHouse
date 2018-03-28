@@ -14,12 +14,12 @@
         <title>Customer home page</title>
 
         <% User user = (User) session.getAttribute("user");
-           Configuration conf = (Configuration) session.getAttribute("configuration");
+            Configuration conf = (Configuration) session.getAttribute("configuration");
         %>
     </head>
     <body>
         <div>
-            <h1>Hello <%= user.getEmail() %> </h1>
+            <h1>Hello <%= user.getEmail()%> </h1>
             You are now logged in as a customer of our wonderful site.
         </div>
         <div>
@@ -27,7 +27,7 @@
             <a>Made possible by a recursive Lego Builder AI!</a>
             <br>
             <br>
-            
+
             <form name="configure" action="FrontController" method="POST">
                 <input type="hidden" name="command" value="configure">
                 Length:<br>
@@ -51,10 +51,11 @@
                 <input type="submit" value="Calculate">
             </form>
         </div>
-            
-            <br>
-        <% if (conf != null){ %>
+
+        <br>
         <div>
+            <% if (conf != null) {%>
+
             <table>
                 <tr>
                     <th></th>
@@ -66,22 +67,26 @@
                 </tr>
                 <tr>
                     <td>Amount:</td>
-                    <td><%= conf.getFourTwo() %></td>
-                    <td><%= conf.getTwoTwo() %></td>
-                    <td><%= conf.getOneTwo() %></td>
-                    <td><%= conf.isDoor() %></td>
-                    <td><%= "" + conf.isWindow() %></td>
+                    <td><%= conf.getFourTwo()%></td>
+                    <td><%= conf.getTwoTwo()%></td>
+                    <td><%= conf.getOneTwo()%></td>
+                    <td><%= conf.isDoor()%></td>
+                    <td><%= "" + conf.isWindow()%></td>
                 </tr>
             </table>
-                
-                <form name="placeorder" action="FrontController" method="POST">
-                    <input type="hidden" name="command" value="placeorder">
-                    <input type="submit" value="Place Order">
-                </form>
 
+            <form name="placeorder" action="FrontController" method="POST">
+                <input type="hidden" name="command" value="placeorder">
+                <input type="submit" value="Place Order">
+            </form>
+
+
+                    <% } else if (session.getAttribute("orderok") != null) { %>
+            <h2>Order Was Successfully Submitted!</h2>
+            <a>To view your order go to Orders</a>
+
+            <% }%>
         </div>
-        <% } %>
-        
     </body>
 
 

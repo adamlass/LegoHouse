@@ -8,6 +8,7 @@ package DBAccess;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 import PresentationLayer.Configuration;
+import PresentationLayer.Specification;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,19 +19,18 @@ import java.sql.ResultSet;
  */
 public class OrderMapper {
     
-    public static void placeOrder(int length, int width, int height, boolean door, 
-            boolean window, int ownerId) throws LoginSampleException{
+    public static void placeOrder(Specification spec, int ownerId) throws LoginSampleException{
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO Orders(owner,length,width,height,door,window) "
                     + "values (?,?,?,?,?,?)";
             PreparedStatement pre = con.prepareStatement(SQL);
             pre.setInt(1, ownerId);
-            pre.setInt(2, length);
-            pre.setInt(3, width);
-            pre.setInt(4, height);
-            pre.setBoolean(5, door);
-            pre.setBoolean(6, window);
+            pre.setInt(2, spec.getLength());
+            pre.setInt(3, spec.getWidth());
+            pre.setInt(4, spec.getHeight());
+            pre.setBoolean(5, spec.isDoor());
+            pre.setBoolean(6, spec.isWindow());
             pre.executeUpdate();
             
         } catch (Exception e) {

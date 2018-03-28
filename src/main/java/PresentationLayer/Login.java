@@ -23,6 +23,8 @@ public class Login extends Command {
         session.setAttribute( "user", user );
         session.setAttribute( "role", user.getRole() );
         session.setAttribute( "configuration", null);
+        session.setAttribute( "specification", null);
+        session.setAttribute("orderok", null);
         return user.getRole() + "page";
     }
 

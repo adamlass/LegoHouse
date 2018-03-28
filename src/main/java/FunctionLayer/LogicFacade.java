@@ -5,6 +5,7 @@ import DBAccess.UserMapper;
 import FunctionLayer.Calculator.LegoHouseCalculator;
 import FunctionLayer.Calculator.Position;
 import PresentationLayer.Configuration;
+import PresentationLayer.Specification;
 
 /**
  * The purpose of LogicFacade is to...
@@ -23,12 +24,12 @@ public class LogicFacade {
         return user;
     }
 
-    public static Configuration getConfiguration(int length, int width,
-            int height, boolean door, boolean window) throws LoginSampleException {
+    public static Configuration getConfiguration(Specification spec) throws LoginSampleException {
         Configuration res = null;
         try {
-            LegoHouseCalculator house = new LegoHouseCalculator(height, width,
-                    length, door, window);
+            LegoHouseCalculator house = new LegoHouseCalculator(spec.getHeight(),
+                    spec.getWidth(),
+                    spec.getLength(), spec.isDoor(), spec.isWindow());
 
             house.build(new Position(0, 0));
 
@@ -39,9 +40,8 @@ public class LogicFacade {
         return res;
     }
 
-    public static void placeOrder(int length, int width, int height, boolean door,
-            boolean window, User owner) throws LoginSampleException {
-        OrderMapper.placeOrder(length, width, height, door, window, owner.getId());
+    public static void placeOrder(Specification spec, User owner) throws LoginSampleException {
+        OrderMapper.placeOrder(spec, owner.getId());
     }
 
 }
