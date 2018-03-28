@@ -18,6 +18,7 @@ public class Configure extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+        try{
         int length = Integer.parseInt(request.getParameter("length"));
         int width = Integer.parseInt(request.getParameter("width"));
         int height = Integer.parseInt(request.getParameter("height"));
@@ -37,6 +38,9 @@ public class Configure extends Command {
 
         request.getSession().setAttribute("configuration", conf);
         request.getSession().setAttribute("specification", spec);
+        } catch (Exception e){
+            throw new LoginSampleException(e.getMessage());
+        }
         return "customerpage";
     }
 

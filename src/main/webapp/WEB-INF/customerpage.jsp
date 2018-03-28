@@ -19,48 +19,62 @@
         %>
     </head>
     <body>
-        <div class="container">
-            <div>
+        <div class="container container-fluid">
+            <div class="well">
                 <h1>Hello <%= user.getEmail()%> </h1>
-                You are now logged in as a customer of our wonderful site.
             </div>
             <div class="row">
-                <div class="col-xs-6">
-                    <h1>Design your LegoHouse</h1>
+                <div class="col-lg-6">
+                    <h2>Design your LegoHouse</h2>
                     <a>Made possible by a recursive Lego Builder AI!</a>
                     <br>
                     <br>
 
                     <form name="configure" action="FrontController" method="POST" >
 
-                        <input type="hidden" class="form-control" name="command" value="configure">
-                        Length:<br>
-                        <input type="number" name="length" value="8">
-                        <br>
-                        Width:<br>
-                        <input type="number" name="width" value="6">
-                        <br>
-                        Height:<br>
-                        <input type="number" name="height" value="6">
+
+                        <input type="hidden" name="command" value="configure">
+
+                        <label>
+                            Length<br>
+                            <input type="number" class="form-control" name="length" placeholder="min. 8">
+                        </label>
                         <br>
 
-                        Include:
-                        <br>
-                        <input type="checkbox" name="door" value="true" checked>Door
-
-                        <br>
-                        <input type="checkbox" name="window" value="true" checked>Window
+                        <label>
+                            Width
+                            <input type="number" class="form-control" name="width" placeholder="min. 6">
+                        </label>
                         <br>
 
-                        <input type="submit" value="Calculate">
+                        <label>
+                            Height
+                            <input type="number" class="form-control" name="height" placeholder="min. 6">
+                        </label>
+                        <br>
+
+                        <label>
+                            Door & Window
+                            <br>
+                            <label class="form-control">
+                                <input type="checkbox" name="door" value="true"> Door
+                            </label>
+                            <label class="form-control">
+                                <input type="checkbox" name="window" value="true"> Window
+                            </label>
+                        </label>
+
+                        <br>
+
+                        <input type="submit" class="btn btn-primary" value="Calculate">
                     </form>
                 </div>
 
                 <br>
-                <div class="col-xs-6">
+                <div class="col-lg-6">
                     <% if (conf != null) {%>
 
-                    <table>
+                    <table class="table table-bordered">
                         <tr>
                             <th></th>
                             <th>4x2 blocks</th>
@@ -81,19 +95,31 @@
 
                     <form name="placeorder" action="FrontController" method="POST">
                         <input type="hidden" name="command" value="placeorder">
-                        <input type="submit" value="Place Order">
+                        <input type="submit" class="btn btn-success" value="Place Order">
                     </form>
 
 
                     <% } else if (session.getAttribute("orderok") != null) { %>
-                    <h2>Order Was Successfully Submitted!</h2>
-                    <a>To view your order go to Orders</a>
-                    <%@include file="seeorders.jsp" %>
+                    <div class="alert alert-success">
+                        <strong>Success!</strong>
+                        Your Order Was Successfully Submitted!
+                        <br><br>To view your order go to Orders
+                        <br><br>
+                        <%@include file="seeorders.jsp" %>
+                    </div>
+                   
+                    
+                    
+
+
+                    
 
                     <% }%>
-                    
+
                 </div>
             </div>
+            <br>
+            <br>
             <div>
                 <%@include file="seeorders.jsp" %>
                 <%@include file="logout.jsp" %>

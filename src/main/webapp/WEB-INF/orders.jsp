@@ -23,14 +23,22 @@
     </head>
     <body>
         <div class="container container-fluid">
-            <%
-                String role = user.getRole();
-                if (role.equals("customer")) {%>
-            <h1><%= user.getEmail()%>'s orders</h1>
-            <% } else if (role.equals("employee")) { %>
-            <h1>All Orders</h1>
-            <% } %>
+            <div class="well">
 
+                <%
+                    String role = user.getRole();
+                    if (role.equals("customer")) {%>
+                <h1><%= user.getEmail()%>'s orders</h1>
+                <% } else if (role.equals("employee")) { %>
+                <h1>All Orders</h1>
+                <% } %>
+            </div>
+            <div>
+                <form action="FrontController" method="post">
+                    <input type="hidden" name="command" value="back">
+                    <input type="submit" class="btn btn-default" value="back">
+                </form>
+            </div>
             <div class="row">
                 <div class="col-lg-6">
                     <table class="table table-striped table-hover">
@@ -48,7 +56,10 @@
                             <% if (orders != null) {
                                     for (Order order : orders) {%>
 
-                            <tr>
+                            <tr <% if (order.isSent()) { %>
+                                class="success"
+                                <%}%>
+                                >
                                 <td>
                                     <form name="vieworder" action="FrontController" method="POST">
                                         <input type="hidden" name="command" value="vieworder">
@@ -115,12 +126,7 @@
                     <%}%>
                 </div>
             </div>
-            <div>
-                <form action="FrontController" method="post">
-                    <input type="hidden" name="command" value="back">
-                    <input type="submit" class="btn btn-default" value="back">
-                </form>
-            </div>
+
         </div>
     </body>
 </html>
