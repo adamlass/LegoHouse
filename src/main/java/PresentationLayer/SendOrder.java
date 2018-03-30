@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author adamlass
  */
-public class SendOrder extends Command{
+public class SendOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
@@ -23,5 +23,5 @@ public class SendOrder extends Command{
         request.getSession().setAttribute("mark", "ok");
         return "employeepage";
     }
-    
+
 }

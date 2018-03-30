@@ -16,22 +16,21 @@ import javax.servlet.http.HttpSession;
  *
  * @author adamlass
  */
-public class PlaceOrder extends Command{
+public class PlaceOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
         HttpSession session = request.getSession();
         Specification spec = (Specification) session
                 .getAttribute("specification");
-        
+
         User owner = (User) request.getSession().getAttribute("user");
         LogicFacade.placeOrder(spec, owner);
         session.setAttribute("specification", null);
         session.setAttribute("configuration", null);
         session.setAttribute("orderok", "notnull"); //the only way that worked...
-        
-        
+
         return "customerpage";
     }
-    
+
 }

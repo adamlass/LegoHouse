@@ -7,9 +7,11 @@ package FunctionLayer;
 
 /**
  * Remember to also set id on the order.
+ *
  * @author adamlass
  */
 public class Order {
+
     private int id, length, width, height;
     private User owner;
     private boolean window, door, sent;
@@ -60,7 +62,5 @@ public class Order {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
-    
+
 }

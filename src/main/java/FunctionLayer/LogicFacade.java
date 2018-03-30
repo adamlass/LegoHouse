@@ -52,8 +52,8 @@ public class LogicFacade {
     public static List<Order> getOrders(User owner) throws LoginSampleException {
         return OrderMapper.orders(owner);
     }
-    
-    public static void markOrder(int order) throws LoginSampleException{
+
+    public static void markOrder(int order) throws LoginSampleException {
         OrderMapper.mark(order);
     }
 

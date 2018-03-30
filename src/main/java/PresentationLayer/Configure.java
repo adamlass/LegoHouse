@@ -18,27 +18,27 @@ public class Configure extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        try{
-        int length = Integer.parseInt(request.getParameter("length"));
-        int width = Integer.parseInt(request.getParameter("width"));
-        int height = Integer.parseInt(request.getParameter("height"));
-        boolean door = false;
-        boolean window = false;
+        try {
+            int length = Integer.parseInt(request.getParameter("length"));
+            int width = Integer.parseInt(request.getParameter("width"));
+            int height = Integer.parseInt(request.getParameter("height"));
+            boolean door = false;
+            boolean window = false;
 
-        if (request.getParameter("door") != null) {
-            door = true;
-        }
+            if (request.getParameter("door") != null) {
+                door = true;
+            }
 
-        if (request.getParameter("window") != null) {
-            window = true;
-        }
+            if (request.getParameter("window") != null) {
+                window = true;
+            }
 
-        Specification spec = new Specification(length, width, height, door, window);
-        Configuration conf = LogicFacade.getConfiguration(spec);
+            Specification spec = new Specification(length, width, height, door, window);
+            Configuration conf = LogicFacade.getConfiguration(spec);
 
-        request.getSession().setAttribute("configuration", conf);
-        request.getSession().setAttribute("specification", spec);
-        } catch (Exception e){
+            request.getSession().setAttribute("configuration", conf);
+            request.getSession().setAttribute("specification", spec);
+        } catch (Exception e) {
             throw new LoginSampleException(e.getMessage());
         }
         return "customerpage";

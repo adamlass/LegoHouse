@@ -2,11 +2,12 @@ package FunctionLayer;
 
 /**
  * The purpose of User is to...
+ *
  * @author kasper
  */
 public class User {
 
-    public User( String email, String password, String role ) {
+    public User(String email, String password, String role) {
         this.email = email;
         this.password = password;
         this.role = role;
@@ -21,7 +22,7 @@ public class User {
         return email;
     }
 
-    public void setEmail( String email ) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -29,7 +30,7 @@ public class User {
         return password;
     }
 
-    public void setPassword( String password ) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -37,7 +38,7 @@ public class User {
         return role;
     }
 
-    public void setRole( String role ) {
+    public void setRole(String role) {
         this.role = role;
     }
 
@@ -45,7 +46,7 @@ public class User {
         return id;
     }
 
-    public void setId( int id ) {
+    public void setId(int id) {
         this.id = id;
     }
 

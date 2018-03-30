@@ -72,8 +72,8 @@ public class OrderMapper {
 
                 int dbowner = rs.getInt("owner");
                 User orderOwner = UserMapper.find(dbowner);
-                
-                res.add(new Order(id, length, width, height, orderOwner, window, 
+
+                res.add(new Order(id, length, width, height, orderOwner, window,
                         door, sent));
             }
 
@@ -90,7 +90,7 @@ public class OrderMapper {
             PreparedStatement pre = con.prepareStatement(SQL);
             pre.setInt(1, order);
             pre.execute();
-            
+
         } catch (Exception e) {
             throw new LoginSampleException("Sending Order Failed!");
         }

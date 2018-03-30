@@ -10,6 +10,7 @@ package PresentationLayer;
  * @author adamlass
  */
 public class Configuration {
+
     private int fourTwo, twoTwo, oneTwo;
     private boolean door, window;
 
@@ -45,7 +46,5 @@ public class Configuration {
     public String toString() {
         return "Configuration{" + "fourTwo=" + fourTwo + ", twoTwo=" + twoTwo + ", oneTwo=" + oneTwo + ", door=" + door + ", window=" + window + '}';
     }
-    
-    
-    
+
 }

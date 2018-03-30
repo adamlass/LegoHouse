@@ -10,6 +10,7 @@ package PresentationLayer;
  * @author adamlass
  */
 public class Specification {
+
     private int length, width, height;
     private boolean door, window;
 
@@ -20,7 +21,6 @@ public class Specification {
         this.door = door;
         this.window = window;
     }
-    
 
     public int getLength() {
         return length;
@@ -41,6 +41,5 @@ public class Specification {
     public boolean isWindow() {
         return window;
     }
-    
-    
+
 }

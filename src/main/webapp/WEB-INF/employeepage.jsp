@@ -20,22 +20,22 @@
     </head>
     <body>
         <div class="container container-fluid">
-        <div class="well">
-        <h1>Hello <%= user.getEmail() %> </h1>
-        
+            <div class="well">
+                <h1>Hello <%= user.getEmail()%> </h1>
+
+            </div>
+            <%@include file="EmployeeWarning.jsp" %>
+            <div>
+                <% if (mark != null) {%>
+                <h2>Order was sent!</h2>
+                <% }%>
+                <form name="SeeOrders" action="FrontController" method="post">
+                    <input type="hidden" name="command" value="SeeOrders">
+                    <input type="submit" name="orders" class="btn btn-info" value="See All Orders">
+                </form>
+                <%@include file="logout.jsp" %>
+            </div>
         </div>
-        <%@include file="EmployeeWarning.jsp" %>
-        <div>
-            <% if (mark != null) {%>
-            <h2>Order was sent!</h2>
-            <% }%>
-            <form name="SeeOrders" action="FrontController" method="post">
-                <input type="hidden" name="command" value="SeeOrders">
-                <input type="submit" name="orders" class="btn btn-info" value="See All Orders">
-            </form>
-            <%@include file="logout.jsp" %>
-        </div>
-        </div>
-        
+
     </body>
 </html>

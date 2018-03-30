@@ -11,79 +11,79 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- The purpose of UserMapper is to...
-
- @author kasper
+ * The purpose of UserMapper is to...
+ *
+ * @author kasper
  */
 public class UserMapper {
 
-    public static void createUser( User user ) throws LoginSampleException {
+    public static void createUser(User user) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO Users (email, password, role) VALUES (?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
-            ps.setString( 1, user.getEmail() );
-            ps.setString( 2, user.getPassword() );
-            ps.setString( 3, user.getRole() );
+            PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, user.getEmail());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getRole());
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
-            int id = ids.getInt( 1 );
-            user.setId( id );
-        } catch ( SQLException | ClassNotFoundException ex ) {
-            throw new LoginSampleException( ex.getMessage() );
+            int id = ids.getInt(1);
+            user.setId(id);
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LoginSampleException(ex.getMessage());
         }
     }
 
-    public static User login( String email, String password ) throws LoginSampleException {
+    public static User login(String email, String password) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT id, role FROM Users "
                     + "WHERE email=? AND password=?";
-            PreparedStatement ps = con.prepareStatement( SQL );
-            ps.setString( 1, email );
-            ps.setString( 2, password );
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setString(1, email);
+            ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-            if ( rs.next() ) {
-                String role = rs.getString( "role" );
-                int id = rs.getInt( "id" );
-                User user = new User( email, password, role );
-                user.setId( id );
+            if (rs.next()) {
+                String role = rs.getString("role");
+                int id = rs.getInt("id");
+                User user = new User(email, password, role);
+                user.setId(id);
                 return user;
             } else {
-                throw new LoginSampleException( "Could not validate user" );
+                throw new LoginSampleException("Could not validate user");
             }
-        } catch ( ClassNotFoundException | SQLException ex ) {
+        } catch (ClassNotFoundException | SQLException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
     }
-    
-    public static User find(int id) throws LoginSampleException{
+
+    public static User find(int id) throws LoginSampleException {
         User res = null;
-        try{
+        try {
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM Users where id = ?";
             PreparedStatement pre = con.prepareStatement(SQL);
             pre.setInt(1, id);
-            
+
             ResultSet rs = pre.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 int dbid = rs.getInt("id");
                 String email = rs.getString("email");
                 String password = rs.getString("password");
                 String role = rs.getString("role");
-                
+
                 res = new User(email, password, role);
                 res.setId(dbid);
             } else {
                 throw new Exception("User not found!");
             }
-            
-        } catch (Exception ex){
+
+        } catch (Exception ex) {
             throw new LoginSampleException(ex.getMessage());
-        } 
-       return res;
+        }
+        return res;
     }
 
 }
