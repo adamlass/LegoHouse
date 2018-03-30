@@ -4,6 +4,7 @@
     Author     : kasper
 --%>
 
+<%@page import="PresentationLayer.Specification"%>
 <%@page import="PresentationLayer.Configuration"%>
 <%@page import="FunctionLayer.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,6 +17,7 @@
 
         <% User user = (User) session.getAttribute("user");
             Configuration conf = (Configuration) session.getAttribute("configuration");
+            Specification specs = (Specification) session.getAttribute("specification");
         %>
     </head>
     <body>
@@ -39,19 +41,31 @@
 
                                 <label>
                                     Length<br>
-                                    <input type="number" class="form-control" name="length" placeholder="min. 8">
+                                    <input type="number" class="form-control" name="length" placeholder="min. 8"value="<%
+                                        if (specs != null) {
+                                            out.print("" + specs.getLength());
+                                        }
+                                           %>">
                                 </label>
                                 <br>
 
                                 <label>
                                     Width
-                                    <input type="number" class="form-control" name="width" placeholder="min. 6">
+                                    <input type="number" class="form-control" name="width" placeholder="min. 6"value="<%
+                                        if (specs != null) {
+                                            out.print("" + specs.getWidth());
+                                        }
+                                           %>">
                                 </label>
                                 <br>
 
                                 <label>
                                     Height
-                                    <input type="number" class="form-control" name="height" placeholder="min. 6">
+                                    <input type="number" class="form-control" name="height" placeholder="min. 6" value="<%
+                                        if (specs != null) {
+                                            out.print("" + specs.getHeight());
+                                        }
+                                           %>">
                                 </label>
                                 <br>
 
@@ -59,10 +73,22 @@
                                     Door & Window
                                     <br>
                                     <label class="form-control">
-                                        <input type="checkbox" name="door" value="true"> Door
+                                        <input type="checkbox" name="door" value="true" <%
+                                            if (specs != null) {
+                                                if (specs.isDoor()) {
+                                                    out.print("checked");
+                                                }
+                                            }
+                                               %>> Door
                                     </label>
                                     <label class="form-control">
-                                        <input type="checkbox" name="window" value="true"> Window
+                                        <input type="checkbox" name="window" value="true" <%
+                                            if (specs != null) {
+                                                if (specs.isWindow()) {
+                                                    out.print("checked");
+                                                }
+                                            }
+                                               %>> Window
                                     </label>
                                 </label>
                                 <br><br>

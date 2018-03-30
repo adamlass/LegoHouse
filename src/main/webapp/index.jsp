@@ -55,14 +55,14 @@
                                 <input type="text" class="form-control" name="email" placeholder="customer@LegoHouse.com">
                                 <br>
                                 <label>
-                                Password<br>
+                                    Password<br>
                                 </label>
                                 <input type="password"  class="form-control" name="password1" placeholder="********">
                                 <br>
                                 <label>
-                                Retype Password<br>
+                                    Retype Password<br>
                                 </label>
-                                
+
                                 <input type="password" class="form-control" name="password2" placeholder="********">
                                 <br>
                                 <input type="submit" class="btn btn-primary" value="Create User">

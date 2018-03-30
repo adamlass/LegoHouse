@@ -17,32 +17,32 @@ import javax.servlet.http.HttpSession;
  *
  * @author adamlass
  */
-public class ViewOrder extends Command{
+public class ViewOrder extends Command {
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
-        try{
-        HttpSession session = request.getSession();
-        List<Order> orders = (List<Order>) session.getAttribute("orders");
-        int id = Integer.parseInt(request.getParameter("id"));
-        
-        Order subject = null;
-        for(Order order : orders){
-            if(order.getId() == id){
-                subject = order;
+        try {
+            HttpSession session = request.getSession();
+            List<Order> orders = (List<Order>) session.getAttribute("orders");
+            int id = Integer.parseInt(request.getParameter("id"));
+
+            Order subject = null;
+            for (Order order : orders) {
+                if (order.getId() == id) {
+                    subject = order;
+                }
             }
-        }
-        Configuration conf = LogicFacade.getConfiguration(new Specification(subject.getLength(), 
-                subject.getWidth(), subject.getHeight(), subject.isDoor(), 
-                subject.isWindow()));
-        
-        session.setAttribute("configurationview", conf);
-        
-        } catch (Exception ex){
+            Configuration conf = LogicFacade.getConfiguration(new Specification(subject.getLength(),
+                    subject.getWidth(), subject.getHeight(), subject.isDoor(),
+                    subject.isWindow()));
+
+            session.setAttribute("configurationview", conf);
+
+        } catch (Exception ex) {
             throw new LoginSampleException(ex.getMessage());
         }
-        
+
         return "orders";
     }
-    
+
 }
